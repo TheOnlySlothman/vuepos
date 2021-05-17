@@ -1,12 +1,25 @@
 <template>
+    <!-- The application in admin view -->
     <div>
-        <!-- The application in admin view -->
+        <new-product :products="products" @new-product="onNewProductAdded" />
+        <product-list :products="products" />
+        <history :products="products" />
     </div>
 </template>
 
 <script>
-export default {
+import History from '../History/History';
+import NewProduct from '../Products/Admin/NewProduct';
+import ProductList from '../Products/Admin/ProductList';
 
+export default {
+  components: { ProductList, NewProduct, History },
+    props: { products: Array },
+    methods: {
+        onNewProductAdded(product) {
+            this.$emit('new-product', product);
+        }
+    }
 }
 </script>
 

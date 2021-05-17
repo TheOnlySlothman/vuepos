@@ -1,19 +1,37 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <admin-content :products="products" @new-product="onNewProductAdded" />
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import AdminContent from './components/Shared/AdminContent.vue';
+import Product from './models/Product'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    AdminContent
+  },
+  data: () => ({
+    products: [
+      new Product("Hello", "There", 69, 10),
+    ]
+  }),
+  methods: {
+    onNewProductAdded(product) {
+      this.products.push(product);
+    },
+    saveData() {
+      localStorage.setItem('data', JSON.stringify(this.$data));
+    },
+    loadData() {
+      this.$data = JSON.parse(localStorage.getItem('data'));
+    }
   }
 }
+
+
 </script>
 
 <style>
