@@ -1,18 +1,33 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <history
+    v-for="(o, index) in orders"
+    :key="index"
+    :hOrder="o">
+    </history>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import History from './components/History/History'
+import Product from './models/Product'
 
 export default {
   name: 'App',
-  components: {
-    HelloWorld
-  }
+  components: { History },
+  data: () => ({
+    orders:
+    [
+      [
+        new Product('Cucumber', 'Long juicy green vegetable', 2, 1),
+        new Product('Orange', 'Round juicy orange fruit', 1, 2)
+      ],
+      [
+        new Product('Beef', 'Round Juicy red meat', 5, 5),
+        new Product('Chicken Fillet', 'Chicken Fillet shaped pink meat', 7, 4)
+      ]
+    ]
+  })
 }
 </script>
 
