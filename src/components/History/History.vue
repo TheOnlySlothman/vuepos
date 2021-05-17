@@ -1,20 +1,19 @@
 <template>
-    <div>
-        <!-- History component consisting of multiple HistoryOrders -->
-         <history-order
-        v-for="(x, index) in hOrder"
-        :key="index"
-        :hOrderProduct="x">
+    <!-- History component consisting of multiple HistoryOrders -->
+    <div class="history">
+        <history-order :products="order.products">
         </history-order>
     </div>
 </template>
 
 <script>
+import Order from '../../models/Order'
 import HistoryOrder from './HistoryOrder.vue'
+
 export default {
     components: { HistoryOrder },
     props: {
-        hOrder: Array
+        order: Order,
     }
 }
 </script>

@@ -1,8 +1,8 @@
 <template>
-    <div>
-        <!-- Order item in history component -->
+    <!-- Order item in history component -->
+    <div class="history-order">
         <history-order-product
-        v-for="(p, index) in hOrderProduct"
+        v-for="(p, index) in products" 
         :key="index"
         :product="p">
         </history-order-product>
@@ -10,11 +10,12 @@
 </template>
 
 <script>
-import HistoryOrderProduct from './HistoryOrderProduct.vue'
+import HistoryOrderProduct from './HistoryOrderProduct.vue';
+
 export default {
     components: { HistoryOrderProduct },
-    prop: {
-        hOrderProduct: Array
+    props: {
+        products: Array
     }
 }
 </script>
