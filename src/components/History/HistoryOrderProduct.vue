@@ -17,8 +17,8 @@ export default {
 </script>
 
 <style>
-template {
+.history-order-product {
     width:200px;
-    border:1px solid;
+    border:1px dashed;
 }
 </style>

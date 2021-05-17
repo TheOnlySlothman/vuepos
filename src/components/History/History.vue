@@ -19,7 +19,7 @@ export default {
 </script>
 
 <style>
-template{
+.history{
     width:200px;
     border:1px solid;
 }
