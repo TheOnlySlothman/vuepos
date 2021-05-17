@@ -2,7 +2,7 @@
     <!-- The application in admin view -->
     <div>
         <new-product :products="products" @new-product="onNewProductAdded" />
-        <product-list :products="products" />
+        <product-list :products="products" @remove-product="onRemoveProduct" />
         <history :products="products" />
     </div>
 </template>
@@ -18,6 +18,9 @@ export default {
     methods: {
         onNewProductAdded(product) {
             this.$emit('new-product', product);
+        },
+        onRemoveProduct(product) {
+            this.$emit('remove-product', product);
         }
     }
 }

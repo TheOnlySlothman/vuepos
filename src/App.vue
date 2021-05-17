@@ -1,12 +1,15 @@
 <template>
   <div id="app">
-    <admin-content :products="products" @new-product="onNewProductAdded" />
+    <admin-content :products="products" 
+      @new-product="onNewProductAdded" 
+      @remove-product="onRemoveProduct"
+    />
   </div>
 </template>
 
 <script>
 import AdminContent from './components/Shared/AdminContent.vue';
-import Product from './models/Product'
+import Product from './models/Product';
 
 export default {
   name: 'App',
@@ -22,6 +25,10 @@ export default {
     onNewProductAdded(product) {
       this.products.push(product);
     },
+    onRemoveProduct(product) {
+      this.products.splice(this.products.indexOf(product), 1);
+    },
+
     saveData() {
       localStorage.setItem('data', JSON.stringify(this.$data));
     },
