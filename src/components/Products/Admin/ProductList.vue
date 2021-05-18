@@ -1,9 +1,10 @@
 <template>
     <!-- Container for all AdminProducts -->
-    <div class="product-list-container">
-        <div v-for="(p, i) in products" :key="i">
-            <admin-product :product="p" @remove-product="onRemoveProduct" />
-        </div>
+    <div id="product-list-container">
+        <admin-product 
+            v-for="(p, i) in products" :key="i"
+            :product="p" @remove-product="onRemoveProduct" 
+        />
     </div>
 </template>
 

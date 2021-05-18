@@ -1,6 +1,6 @@
 <template>
     <!-- Component used to create a new product -->
-    <div class="new-rproduct-container">
+    <div class="new-product">
         <input required placeholder="Name" name="name" type="text" v-model="name">
         <input required placeholder="Description" name="description" type="text" v-model="description">
         <input required placeholder="Price" name="price" type="number" v-model="price">

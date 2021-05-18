@@ -1,6 +1,6 @@
 <template>
     <!-- The application in admin view -->
-    <div>
+    <div id="admin-content">
         <new-product :products="products" @new-product="onNewProductAdded" />
         <product-list :products="products" @remove-product="onRemoveProduct" />
         <history :products="products" />
