@@ -1,6 +1,6 @@
 <template>
     <!-- Product in Admin view -->
-    <div class="admin-product-container">
+    <div class="admin-product">
         <label>
             Display
             <input type="checkbox" :value="product.displayed">
