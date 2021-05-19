@@ -43,7 +43,7 @@ export default {
     /**@param {Product} product */
     onNewProductAdded(product) {
       this.products.push(product);
-      vueposLog(`Added product ${product.quantity} "${product.name}" for the price: ${product.price}`);
+      vueposLog(`Added ${product.quantity} ${product.name}${(product.name.endsWith('s') ? 'es' : 's')} for the price: ${product.price}`);
       this.saveData();
     },
     /**@param {Product} product */
