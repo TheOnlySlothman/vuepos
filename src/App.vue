@@ -18,7 +18,10 @@ export default {
   },
   data: () => ({
     products: [
-      new Product("Hello", "There", 69, 10),
+      new Product("Product1", "Product1 description", 100, 10),
+      new Product("Product2", "Product2 description", 1000, 10),
+      new Product("Product3", "Product3 very cool description", 10, 10),
+      new Product("Product4", "Product4 description", 99.95, 10),
     ]
   }),
   methods: {
