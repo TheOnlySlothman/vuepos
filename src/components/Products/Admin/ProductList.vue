@@ -13,13 +13,9 @@ import AdminProduct from "./AdminProduct.vue"
 
 export default {
   components: { AdminProduct }, 
-    props: {
-        products: Array
-    },
+    props: { products: Array },
     methods: {
-        onRemoveProduct(product) {
-            this.$emit('remove-product', product);
-        }
+        onRemoveProduct(product) { this.$emit('remove-product', product); }
     }
 }
 </script>

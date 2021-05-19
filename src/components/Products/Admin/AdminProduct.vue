@@ -18,7 +18,7 @@ import Product from '../../../models/Product'
 
 export default {
     props: {
-        product: Product
+        product: [Product, Object]
     },
     methods: {
         removeButtonClicked() {

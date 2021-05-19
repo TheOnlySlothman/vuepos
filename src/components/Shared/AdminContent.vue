@@ -2,7 +2,9 @@
     <!-- The application in admin view -->
     <div id="admin-content">
         <new-product :products="products" @new-product="onNewProductAdded" />
+        <br />
         <product-list :products="products" @remove-product="onRemoveProduct" />
+        <br />
         <history :products="products" />
     </div>
 </template>
@@ -16,12 +18,8 @@ export default {
   components: { ProductList, NewProduct, History },
     props: { products: Array },
     methods: {
-        onNewProductAdded(product) {
-            this.$emit('new-product', product);
-        },
-        onRemoveProduct(product) {
-            this.$emit('remove-product', product);
-        }
+        onNewProductAdded(product) { this.$emit('new-product', product); },
+        onRemoveProduct(product) { this.$emit('remove-product', product); }
     }
 }
 </script>
