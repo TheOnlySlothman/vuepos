@@ -11,7 +11,7 @@ export default {
   components: { ProductDisplay },
   methods: {
     EmployeeAddItem(product) {
-      this.emit("new-product", product);
+      this.emit("new-orderproduct", product);
     },
   },
 };
