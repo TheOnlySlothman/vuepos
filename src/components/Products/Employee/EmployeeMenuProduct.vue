@@ -1,7 +1,8 @@
 <template>
     <div>
         <!-- Big fat button -->
-        <div>
+        <div class="employee-menu-product"
+        v-on:click=EmployeeMenuProductItemClick()>
             <p>{{product.name}}</p>
             <p>{{product.price}}</p>
         </div>
@@ -23,5 +24,8 @@ export default {
 </script>
 
 <style>
-
+.employee-menu-product{
+    width:200px;
+    border:1px solid;
+}
 </style>
