@@ -2,7 +2,7 @@
     <!-- History component consisting of multiple HistoryOrders -->
     <div class="history">
         <history-order 
-        v-for="(index, o) in orders"
+        v-for="(o, index) in orders"
         :key="index"
         :order="o">
         </history-order>

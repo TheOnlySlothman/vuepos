@@ -2,7 +2,7 @@
   <div id="app">
     <!--<product-display :products="products"/>-->
     <div>
-      <history :orders="Orders">
+      <history :orders="orders">
       </history>
     </div>
   </div>
@@ -18,7 +18,7 @@ export default {
   components: {  History },
   name: 'App',
   data: () => ({
-    Orders: [
+    orders: [
       new Order(1, 
         new Product('Cucumber', 'Long juicy green vegetable', 2, 1),
         new Product('Orange', 'Round juicy orange fruit', 1, 2)
