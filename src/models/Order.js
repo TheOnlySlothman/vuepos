@@ -7,7 +7,7 @@ export default class Order {
      */
     constructor(id, ...products) {
         this.id = id;
-        this.products = Array.concat(...products);
+        this.products = [].concat(...products);
         this.placedAt = new Date(Date.now());
     }
 }
