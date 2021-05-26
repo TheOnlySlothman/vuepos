@@ -18,7 +18,7 @@ export default {
 
 <style>
 .history-order-product {
-    width:200px;
     border:1px dashed;
+    padding: 2%;
 }
 </style>

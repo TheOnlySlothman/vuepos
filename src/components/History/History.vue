@@ -21,8 +21,8 @@ export default {
 </script>
 
 <style>
-.history{
-    width:200px;
-    border:1px solid;
+.history {
+    border: 1.5px solid black;
+    margin: 1%;
 }
 </style>

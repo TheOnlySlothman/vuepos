@@ -24,6 +24,6 @@ export default {
 <style>
 .history-order{
     width:200px;
-    border:1px dashed;
+    border:1px solid;
 }
 </style>

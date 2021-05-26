@@ -1,7 +1,7 @@
 <template>
     <!-- The application in admin view -->
     <div id="admin-content">
-        <div id="admin-content-split-1">
+        <div class="admin-content-split" id="admin-content-splitter-1">
             <button id="btnDefaultProductsRequest" @click="onDefaultProductsRequested">Add Default Products</button>
             <br /><br />
             <new-product :products="products" @new-product="onNewProductAdded" />
@@ -9,7 +9,7 @@
             <product-list :products="products" @update-product="onUpdateProduct" @remove-product="onRemoveProduct" />
             <br />
         </div>
-        <div id="admin-content-split-2">
+        <div class="admin-content-split" id="admin-content-splitter-2">
             <history :orders="orders" />
         </div>
     </div>
@@ -67,5 +67,15 @@ export default {
 }
 #btnDefaultProductsRequest {
     border: 2px dashed darkgray;
+}
+.admin-content-split {
+    display: table-column;
+    position: relative;
+}
+#admin-content-splitter-2 {
+    float: right;
+}
+#admin-content-splitter-1 {
+    float: left;
 }
 </style>

@@ -135,6 +135,7 @@ export default {
 }
 
 #content {
+  display: block;
   margin: 2%;
 }
 </style>
