@@ -24,7 +24,7 @@ export default {
     EmployeeAddItemToBasket(product) {
       if (this.basket.HasProduct(product)) {
         //this.$emit('quantity-change', product, 1)
-        this.basket[this.basket.indexOf(this.basket.FindProduct(product))].quantity += 1
+        this.basket.products[this.basket.products.indexOf(this.basket.FindProduct(product))].quantity += 1
         
       }
       else {
