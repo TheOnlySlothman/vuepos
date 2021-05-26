@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <div id="content">
-      <employee-content v-on="" :products="products"/>
+      <employee-content v-on:add-to-basket="AddItemToBasket" :products="[...products]"/>
     </div>
   </div>
 </template>
@@ -27,11 +27,13 @@ export default {
     ],
     products : [
       new Product('Cucumber', 'Long juicy green vegetable', 2, 1),
-      new Product('Orange', 'Round juicy orange fruit', 1, 1),
-      new Product('Beef', 'Round Juicy red meat', 5, 1),
-      new Product('Chicken Fillet', 'Chicken Fillet shaped pink meat', 7, 1)
+      new Product('Orange', 'Round juicy orange fruit', 1, 2),
+      new Product('Beef', 'Round juicy red meat', 5, 3),
+      new Product('Chicken Fillet', 'Chicken Fillet shaped pink meat', 7, 5)
     ]
-  })
+  }),
+  methods: {
+  }
 }
 </script>
 

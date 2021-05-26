@@ -1,8 +1,9 @@
 <template>
     <!-- The application in employee view -->
   <div>
-      <product-display @employeeadditemtobasket="EmployeeAddItemToBasket" :products="products"/>
-      <order-container :basket="basket"/>
+    <product-display @employeeadditemtobasket="EmployeeAddItemToBasket" :products="products"/>
+    <h3>big text</h3>
+    <order-container :basket="basket"/>
   </div>
 </template>
 
@@ -20,7 +21,13 @@ export default {
   methods: {
     /**@param {Product} product */
     EmployeeAddItemToBasket(product) {
-      this.$emit('add-to-basket', product)
+      if (this.basket.includes(product)) {
+        //this.$emit('quantity-change', product, 1)
+        this.basket.push(product)
+      }
+      else {
+        this.basket.push(product)
+      }
     },
   },
 };

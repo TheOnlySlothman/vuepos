@@ -13,7 +13,7 @@
 <script>
 import EmployeeMenuProduct from './EmployeeMenuProduct.vue';
 export default {
-  components: { EmployeeMenuProduct },
+    components: { EmployeeMenuProduct },
     props: {
         products: Array
     },

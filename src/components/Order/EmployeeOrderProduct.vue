@@ -19,7 +19,7 @@ export default {
 </script>
 
 <style>
-.employee-menu-product{
+.employee-order-product{
     width:200px;
     border:1px solid;
 }

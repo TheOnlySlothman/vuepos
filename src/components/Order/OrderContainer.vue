@@ -1,7 +1,7 @@
 <template>
   <div>
     <!-- Contains all EmployeeOrderProducts -->
-    <div class="employee-order-product">
+    <div class="order-container">
     <employee-order-product
       v-for="(p, index) in basket"
       :key="index"
