@@ -22,7 +22,7 @@ export default {
   methods: {
     /**@param {Product} product */
     EmployeeAddItemToBasket(product) {
-      if (this.basket.FindProduct(product)) {
+      if (this.basket.HasProduct(product)) {
         //this.$emit('quantity-change', product, 1)
         this.basket.PushProduct(product)
       }

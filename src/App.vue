@@ -11,7 +11,7 @@
       />
     </div>
     <div id="content" v-else>
-      <employee-content :products="[...products]"/>
+      <employee-content :products="products"/>
     </div>
   </div>
 </template>
@@ -61,8 +61,6 @@ export default {
       let originIndex = this.products.indexOf(origin);
       this.products[originIndex] = updated;
 
-      console.log({ origin, updated })
-
       let changes = Object.keys(updated).reduce((result, current) => {
         if (updated[current] != origin[current])
           result[current] = {
@@ -72,7 +70,7 @@ export default {
         return result;
       }, {});
 
-      vueposLog(`%cProduct updated`);
+      vueposLog(`Product updated`);
       console.table(changes);
 
       this.saveData();

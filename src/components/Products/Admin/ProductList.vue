@@ -4,6 +4,7 @@
         <admin-product 
             v-for="(p, i) in products" :key="i"
             :product="p" 
+            :index="i"
             @remove-product="onRemoveProduct"
             @update-product="onUpdateProduct"
         />
