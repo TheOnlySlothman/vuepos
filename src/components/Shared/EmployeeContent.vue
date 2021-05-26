@@ -1,7 +1,7 @@
 <template>
     <!-- The application in employee view -->
   <div>
-    <product-display @employeeadditemtobasket="EmployeeAddItemToBasket" :products="products"/>
+    <product-display @employeeadditemtobasket="EmployeeAddItemToBasket" :products="products.filter(x => x.displayed)"/>
     <h3>big text</h3>
     <order-container :order="basket"/>
   </div>
