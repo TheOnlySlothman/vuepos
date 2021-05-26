@@ -2,6 +2,7 @@
     <!-- The application in admin view -->
     <div id="admin-content">
         <new-product :products="products" @new-product="onNewProductAdded" />
+        <button id="btnDefaultProductsRequest" @click="onDefaultProductsRequested">Add Default Products</button>
         <br />
         <product-list :products="products" @remove-product="onRemoveProduct" />
         <br />
@@ -13,13 +14,43 @@
 import History from '../History/History';
 import NewProduct from '../Products/Admin/NewProduct';
 import ProductList from '../Products/Admin/ProductList';
+import Product from '../../models/Product';
 
 export default {
-  components: { ProductList, NewProduct, History },
+    components: { ProductList, NewProduct, History },
+    data: () => ({
+        defaultProducts: [
+            new Product('Kringle', "Den er kringleformet med kærlighed", 20, 5),
+            new Product('Lagkage', "Der er op til hele 5 lag", 50, 2),
+            new Product('Kajkage', "Den grønneste frø du kan finde", 10, 10),
+            new Product('Hindbærsnitte', "Der er meget syltetøj i", 25, 5)
+        ]
+    }),
     props: { products: Array },
     methods: {
         onNewProductAdded(product) { this.$emit('new-product', product); },
-        onRemoveProduct(product) { this.$emit('remove-product', product); }
+        onRemoveProduct(product) { this.$emit('remove-product', product); },
+        onDefaultProductsRequested() {
+            let button = document.getElementById('btnDefaultProductsRequest');
+            button.disabled = true;
+
+            if (this.hasDefaultProducts(this.defaultProducts)) return;
+
+            this.$emit('default-products-request', [].concat(...this.defaultProducts));
+        },
+        hasDefaultProducts() {
+            let defaultNames = this.defaultProducts.map(p => p.name);
+            let productNames = this.products.map(p => p.name);
+
+            //If this.products doesn't have a name from this.defaultProducts, name is returned and therefore will return false
+            return defaultNames.find(name => !productNames.includes(name)) == null;
+
+            // for (const name of defaultNames) {
+            //     if (!productNames.includes(name)) 
+            //         return false;
+            // }
+            // return true;
+        }
     }
 }
 </script>

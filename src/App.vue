@@ -5,6 +5,7 @@
       <admin-content :products="products" 
         @new-product="onNewProductAdded" 
         @remove-product="onRemoveProduct"
+        @default-products-request="onDefaultProductsRequested"
       />
     </div>
     <div id="content" v-else>
@@ -19,26 +20,17 @@
 import NavigationBar from './components/Shared/NavigationBar.vue';
 import AdminContent from './components/Shared/AdminContent.vue';
 import EmployeeContent from './components/Shared/EmpoyeeContent';
-import Product from './models/Product';
 import vueposLog from './models/vueposLogger';
-
-let defaultProducts = [
-  new Product("Brød", "Der er ingen beskrivelse om, hvilket slags brød, det er.", 12, 25),
-  new Product("Lun Leverpostej", "Den er i hvert fald lun, hvis du hente den nu", 5, 20),
-  new Product("Ice T", "Branded så godt, at der er ingen grund til at skrive \"Tea\"", 14, 2)
-];
 
 export default {
   name: 'App',
   components: { NavigationBar, AdminContent, EmployeeContent },
   data: () => ({
     adminMode: false,
-    products: defaultProducts,
+    products: [],
     localStorageName: 'products'
   }),
-  created() {
-    this.loadData();
-  },
+  created() { this.loadData(); },
   methods: {
     /**@param {Product} product */
     onNewProductAdded(product) {
@@ -53,6 +45,21 @@ export default {
 
       this.products.splice(productIndex, 1);
       vueposLog(`Removed product "${product.name}" from products.`);
+
+      this.saveData();
+    },
+    /**@param {Product[]} products */
+    onDefaultProductsRequested(products) {
+      let productsLength = this.products.length;
+
+      for (let i = 0; i < productsLength; i++) {
+        this.products.pop();
+      }
+      
+      console.log(this.products);
+      this.products.push(...products);
+
+      vueposLog(`Added ${products.length} default products.`);
 
       this.saveData();
     },
