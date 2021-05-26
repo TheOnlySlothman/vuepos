@@ -1,7 +1,7 @@
 <template>
     <div class="history-order-product">
         <!-- Product from cart displayed in History -->
-        <p>{{product.quantity}} - {{product.name}} - {{product.price}} 	XOF.</p>
+        <p>{{product.quantity}}x {{product.name}}: {{product.price}} XOF.</p>
         <p>{{product.description}}</p>
     </div>
 </template>
@@ -18,7 +18,6 @@ export default {
 
 <style>
 .history-order-product {
-    border:1px dashed;
-    padding: 2%;
+    border-bottom: 1px dashed;
 }
 </style>

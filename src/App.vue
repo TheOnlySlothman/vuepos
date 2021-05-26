@@ -19,10 +19,11 @@
 <script>
 import Product from './models/Product'
 import Order from './models/Order'
+import vueposLog from './models/vueposLogger';
+
 import EmployeeContent from './components/Shared/EmployeeContent'
 import NavigationBar from './components/Shared/NavigationBar.vue';
 import AdminContent from './components/Shared/AdminContent.vue';
-import vueposLog from './models/vueposLogger';
 
 export default {
   name: 'App',
@@ -38,10 +39,10 @@ export default {
       )
     ],
     products : [
-      new Product('Cucumber', 'Long juicy green vegetable', 2, 1),
-      new Product('Orange', 'Round juicy orange fruit', 1, 2),
-      new Product('Beef', 'Round juicy red meat', 5, 3),
-      new Product('Chicken Fillet', 'Chicken Fillet shaped pink meat', 7, 5)
+      // new Product('Cucumber', 'Long juicy green vegetable', 2, 1),
+      // new Product('Orange', 'Round juicy orange fruit', 1, 2),
+      // new Product('Beef', 'Round juicy red meat', 5, 3),
+      // new Product('Chicken Fillet', 'Chicken Fillet shaped pink meat', 7, 5)
     ],
     adminMode: false,
     localStorageName: 'products'
@@ -134,7 +135,7 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   /* text-align: center; */
-  color: #2c3e50;
+  /* color: #2c3e50; */
 }
 
 #content {

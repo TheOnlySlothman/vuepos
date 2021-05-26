@@ -2,9 +2,9 @@
     <div>
         <!-- Product in the employee order -->
         <div class="employee-order-product">
-            <p>{{product.name}}</p>
-            <p>{{product.price}}</p>
-            <p>{{product.quantity}}</p>
+            <p class="product-quantity">{{product.quantity}}x </p>
+            <h3 class="product-name">{{product.name}}</h3>
+            <p class="product-price">{{product.price}} XOF</p>
         </div>
     </div>
 </template>
@@ -20,8 +20,29 @@ export default {
 </script>
 
 <style>
-.employee-order-product{
-    width:200px;
-    border:1px solid;
+.employee-order-product {
+    display: inline-block;
+    border: 1px solid;
+    min-height: 10%;
+    width: 100%;
+}
+.employee-order-product > * {
+    display: inline;
+    margin-block-start: 0px;
+    margin-block-end: 0px;
+    margin: 1%;
+}
+.product-name {
+    margin-bottom: 1%;
+    float: left;
+}
+.product-quantity {
+    float: left;
+    margin-left: 2%;
+}
+.product-price {
+    float: right;
+    margin-block-end: 0px;
+    margin-right: 2%;
 }
 </style>

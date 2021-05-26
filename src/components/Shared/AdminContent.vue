@@ -35,14 +35,22 @@ export default {
     methods: {
         onNewProductAdded(product) { this.$emit('new-product', product); },
         onUpdateProduct(origin, updated) { this.$emit('update-product', origin, updated); },
-        onRemoveProduct(product) { this.$emit('remove-product', product); },
+        onRemoveProduct(product) { 
+            this.$emit('remove-product', product); 
+            if (!this.hasDefaultProducts()) {
+                let button = document.getElementById('btnDefaultProductsRequest');
+                button.disabled = false;
+            }
+
+        },
         onDefaultProductsRequested() {
             let button = document.getElementById('btnDefaultProductsRequest');
             button.disabled = true;
 
             if (this.hasDefaultProducts(this.defaultProducts)) return;
 
-            this.$emit('default-products-request', [].concat(...this.defaultProducts));
+            this.defaultProducts.forEach(p => p.displayed = true);
+            this.$emit('default-products-request', [...this.defaultProducts]);
         },
         hasDefaultProducts() {
             let defaultNames = this.defaultProducts.map(p => p.name);
@@ -69,13 +77,15 @@ export default {
     border: 2px dashed darkgray;
 }
 .admin-content-split {
-    display: table-column;
+    display: inline-block;
     position: relative;
-}
-#admin-content-splitter-2 {
-    float: right;
 }
 #admin-content-splitter-1 {
     float: left;
+}
+#admin-content-splitter-2 {
+    float: right;
+    min-width: 20%;
+    max-width: 35%;
 }
 </style>

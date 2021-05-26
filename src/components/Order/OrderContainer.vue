@@ -1,35 +1,77 @@
 <template>
   <div>
     <!-- Contains all EmployeeOrderProducts -->
-    <div class="order-container">
-    <employee-order-product
-      v-for="(p, index) in order.products"
-      :key="index"
-      :product="p"
-    >
-    </employee-order-product>
-    <button
-    v-on:click="OrderSubmit">
-    big button</button>
+    <div id="order-container">
+      <div id="products">
+        <employee-order-product
+          v-for="(p, index) in basket.products"
+          :key="index"
+          :product="p"
+        />
+      </div>
+      <div class="goBottom" id="total">
+        <h3>Total:</h3>
+        <p id="sum">{{ sum }} XOF</p>
+      </div>
+      <button class="goBottom" @click="OrderSubmit">Buy</button>
     </div>
   </div>
 </template>
 
 <script>
-import Order from '../../models/Order';
+import Basket from '../../models/Basket';
 import EmployeeOrderProduct from "./EmployeeOrderProduct.vue";
+
 export default {
   components: { EmployeeOrderProduct },
   props: {
-    order: Order,
+    basket: new Basket(),
+    sum: Number
   },
   methods: {
-    OrderSubmit(){
-      this.$emit('ordersubmit')
-    }
+    OrderSubmit() { this.$emit('ordersubmit') }
   }
 };
 </script>
 
 <style>
+#order-container {
+  position: relative;
+  border: 2px solid black;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  min-height: 85vh;
+}
+.goBottom {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+#total {
+  bottom: 10%;
+  border-top: 2px solid black;
+  margin: 2%;
+  padding-top: 2%;
+}
+#total > * {
+  display: inline-block;
+  position: relative;
+  margin-block-start: 0;
+  margin-block-end: 0;
+}
+#total > p {
+  position: absolute;
+  right: 2%;
+}
+#order-container > button {
+  height: 10%;
+  font-size: 25px;
+  font-weight: bold;
+}
+#products {
+  display: table-cell;
+  width: 100%;
+  height: 100%;
+}
 </style>

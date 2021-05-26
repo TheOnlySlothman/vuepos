@@ -17,4 +17,9 @@ export default class Order {
     FindProduct(product){
         return this.products.find(x => x.name == product.name)
     }
+    Sum() {
+        return this.products.reduce((result, p) => {
+            result += p.price;
+        }, 0);
+    }
 }
