@@ -6,6 +6,7 @@
         :orders="orders"
         @new-product="onNewProductAdded" 
         @remove-product="onRemoveProduct"
+        @update-product="onUpdateProduct"
         @default-products-request="onDefaultProductsRequested"
       />
     </div>
@@ -52,6 +53,28 @@ export default {
     onNewProductAdded(product) {
       this.products.push(product);
       vueposLog(`Added ${product.quantity} ${product.name}${(product.name.endsWith('s') ? 'es' : 's')} for the price: ${product.price}`);
+      this.saveData();
+    },
+    /**@param {Product} origin
+     * @param {Product} updated*/
+    onUpdateProduct(origin, updated) {
+      let originIndex = this.products.indexOf(origin);
+      this.products[originIndex] = updated;
+
+      console.log({ origin, updated })
+
+      let changes = Object.keys(updated).reduce((result, current) => {
+        if (updated[current] != origin[current])
+          result[current] = {
+            origin: origin[current],
+            updated: updated[current]
+          }
+        return result;
+      }, {});
+
+      vueposLog(`%cProduct updated`);
+      console.table(changes);
+
       this.saveData();
     },
     /**@param {Product} product */
@@ -112,8 +135,11 @@ export default {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
+  /* text-align: center; */
   color: #2c3e50;
-  margin-top: 60px;
+}
+
+#content {
+  margin: 2%;
 }
 </style>
