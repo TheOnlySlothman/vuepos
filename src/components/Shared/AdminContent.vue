@@ -10,7 +10,7 @@
             <br />
         </div>
         <div id="admin-content-split-2">
-            <history :products="products" />
+            <history :orders="orders" />
         </div>
     </div>
 </template>
@@ -31,7 +31,7 @@ export default {
             new Product('Hindbærsnitte', "Der er meget syltetøj i", 25, 5)
         ]
     }),
-    props: { products: Array },
+    props: { products: Array, orders: Array },
     methods: {
         onNewProductAdded(product) { this.$emit('new-product', product); },
         onUpdateProduct(origin, updated) { this.$emit('update-product', origin, updated); },
