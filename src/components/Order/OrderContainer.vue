@@ -3,7 +3,7 @@
     <!-- Contains all EmployeeOrderProducts -->
     <div class="order-container">
     <employee-order-product
-      v-for="(p, index) in basket"
+      v-for="(p, index) in order.products"
       :key="index"
       :product="p"
     >
@@ -13,11 +13,12 @@
 </template>
 
 <script>
+import Order from '../../models/Order';
 import EmployeeOrderProduct from "./EmployeeOrderProduct.vue";
 export default {
   components: { EmployeeOrderProduct },
   props: {
-    basket: Array,
+    order: Order,
   },
 };
 </script>

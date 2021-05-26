@@ -2,16 +2,15 @@
   <div id="app">
     <navigation-bar :adminMode="adminMode" @admin-toggle="onAdminModeToggle" />
     <div id="content" v-if="adminMode">
-      <admin-content :products="products" 
+      <admin-content :products="products"
+        :orders="orders"
         @new-product="onNewProductAdded" 
         @remove-product="onRemoveProduct"
         @default-products-request="onDefaultProductsRequested"
       />
     </div>
     <div id="content" v-else>
-      <employee-content 
-
-      />
+      <employee-content :products="[...products]"/>
     </div>
   </div>
 </template>
