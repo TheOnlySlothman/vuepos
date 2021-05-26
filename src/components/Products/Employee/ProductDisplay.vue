@@ -18,9 +18,10 @@ export default {
         products: Array
     },
     methods: {
+        /**@param {Product} product */
         EmployeeButtonsAddProduct(product)
         {
-            this.$emit("employeeadditem", product)
+            this.$emit("employeeadditemtobasket", product)
         }
     }
 }
