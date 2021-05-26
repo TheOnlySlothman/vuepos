@@ -3,7 +3,7 @@
   <div>
     <product-display @employeeadditemtobasket="EmployeeAddItemToBasket" :products="products.filter(x => x.displayed)"/>
     <h3>big text</h3>
-    <order-container :order="basket"/>
+    <order-container :order="basket" v-on:ordersubmit="FinishOrder"/>
   </div>
 </template>
 
@@ -14,7 +14,7 @@ import ProductDisplay from '../Products/Employee/ProductDisplay.vue';
 export default {
   components: { ProductDisplay, OrderContainer },
   props: {
-    products: Array,
+    products: Array
   },
   data: () => ({
       basket: new Order()
@@ -24,12 +24,17 @@ export default {
     EmployeeAddItemToBasket(product) {
       if (this.basket.HasProduct(product)) {
         //this.$emit('quantity-change', product, 1)
-        this.basket.PushProduct(product)
+        this.basket[this.basket.indexOf(this.basket.FindProduct(product))].quantity += 1
+        
       }
       else {
         this.basket.PushProduct(product)
       }
     },
+    FinishOrder(){
+      this.$emit('addordertohistory', this.basket)
+      this.basket = new Order()
+    }
   },
 };
 </script>

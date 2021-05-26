@@ -14,4 +14,7 @@ export default class Order {
     HasProduct(product){
         return this.products.some(x => x.name == product.name)
     }
+    FindProduct(product){
+        return this.products.find(x => x.name == product.name)
+    }
 }
