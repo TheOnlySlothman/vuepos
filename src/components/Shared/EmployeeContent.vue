@@ -13,6 +13,9 @@ import OrderContainer from '../Order/OrderContainer.vue';
 import ProductDisplay from '../Products/Employee/ProductDisplay.vue';
 export default {
   components: { ProductDisplay, OrderContainer },
+  props: {
+    products: Array
+  },
   data: () => ({
       basket: new Order()
     }),

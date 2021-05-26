@@ -8,9 +8,9 @@
       :product="p"
     >
     </employee-order-product>
-    <h3
+    <button
     v-on:click="OrderSubmit">
-    big fat button</h3>
+    big button</button>
     </div>
   </div>
 </template>
