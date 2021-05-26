@@ -1,7 +1,7 @@
 <template>
     <!-- Navigation bar - toggle between employee/admin mode -->
     <div id="navigation-bar">
-        <label>
+        <label id="adminModeCheckLabel">
             Admin Mode
             <input id="adminModeCheckbox" type="checkbox" @click="onCheckboxChanged">
         </label>
@@ -23,5 +23,13 @@ export default {
 </script>
 
 <style>
+    #navigation-bar {
+        display: flex;
+        border: 3px solid lightgray;
+    }
 
+    #adminModeCheckLabel {
+        position: relative;
+        left: 90%;
+    }
 </style>

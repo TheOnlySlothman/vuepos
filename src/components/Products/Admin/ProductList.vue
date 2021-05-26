@@ -3,7 +3,9 @@
     <div id="product-list-container">
         <admin-product 
             v-for="(p, i) in products" :key="i"
-            :product="p" @remove-product="onRemoveProduct" 
+            :product="p" 
+            @remove-product="onRemoveProduct"
+            @update-product="onUpdateProduct"
         />
     </div>
 </template>
@@ -15,7 +17,8 @@ export default {
   components: { AdminProduct }, 
     props: { products: Array },
     methods: {
-        onRemoveProduct(product) { this.$emit('remove-product', product); }
+        onRemoveProduct(product) { this.$emit('remove-product', product); },
+        onUpdateProduct(origin, updated) { this.$emit('update-product', origin, updated); }
     }
 }
 </script>

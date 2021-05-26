@@ -1,12 +1,17 @@
 <template>
     <!-- The application in admin view -->
     <div id="admin-content">
-        <new-product :products="products" @new-product="onNewProductAdded" />
-        <button id="btnDefaultProductsRequest" @click="onDefaultProductsRequested">Add Default Products</button>
-        <br />
-        <product-list :products="products" @remove-product="onRemoveProduct" />
-        <br />
-        <history :products="products" />
+        <div id="admin-content-split-1">
+            <button id="btnDefaultProductsRequest" @click="onDefaultProductsRequested">Add Default Products</button>
+            <br /><br />
+            <new-product :products="products" @new-product="onNewProductAdded" />
+            <br /><br />
+            <product-list :products="products" @update-product="onUpdateProduct" @remove-product="onRemoveProduct" />
+            <br />
+        </div>
+        <div id="admin-content-split-2">
+            <history :products="products" />
+        </div>
     </div>
 </template>
 
@@ -29,6 +34,7 @@ export default {
     props: { products: Array },
     methods: {
         onNewProductAdded(product) { this.$emit('new-product', product); },
+        onUpdateProduct(origin, updated) { this.$emit('update-product', origin, updated); },
         onRemoveProduct(product) { this.$emit('remove-product', product); },
         onDefaultProductsRequested() {
             let button = document.getElementById('btnDefaultProductsRequest');
@@ -56,5 +62,10 @@ export default {
 </script>
 
 <style>
-
+.new-product {
+    display: inline;
+}
+#btnDefaultProductsRequest {
+    border: 2px dashed darkgray;
+}
 </style>
