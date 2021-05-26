@@ -1,7 +1,17 @@
 <template>
   <div id="app">
-    <div id="content">
-      <employee-content v-on:add-to-basket="AddItemToBasket" :products="[...products]"/>
+    <navigation-bar :adminMode="adminMode" @admin-toggle="onAdminModeToggle" />
+    <div id="content" v-if="adminMode">
+      <admin-content :products="products" 
+        @new-product="onNewProductAdded" 
+        @remove-product="onRemoveProduct"
+        @default-products-request="onDefaultProductsRequested"
+      />
+    </div>
+    <div id="content" v-else>
+      <employee-content 
+
+      />
     </div>
   </div>
 </template>
@@ -10,9 +20,11 @@
 import Product from './models/Product'
 import Order from './models/Order'
 import EmployeeContent from './components/Shared/EmployeeContent'
+import NavigationBar from './components/Shared/NavigationBar.vue';
+import AdminContent from './components/Shared/AdminContent.vue';
+import vueposLog from './models/vueposLogger';
 
 export default {
-  components: {  EmployeeContent },
   name: 'App',
   data: () => ({
     orders: [
@@ -30,9 +42,65 @@ export default {
       new Product('Orange', 'Round juicy orange fruit', 1, 2),
       new Product('Beef', 'Round juicy red meat', 5, 3),
       new Product('Chicken Fillet', 'Chicken Fillet shaped pink meat', 7, 5)
-    ]
+    ],
+    adminMode: false,
+    localStorageName: 'products'
   }),
+  components: { NavigationBar, AdminContent, EmployeeContent },
+  created() { this.loadData(); },
   methods: {
+    /**@param {Product} product */
+    onNewProductAdded(product) {
+      this.products.push(product);
+      vueposLog(`Added ${product.quantity} ${product.name}${(product.name.endsWith('s') ? 'es' : 's')} for the price: ${product.price}`);
+      this.saveData();
+    },
+    /**@param {Product} product */
+    onRemoveProduct(product) {
+      let productIndex = this.products.indexOf(product);
+      if (productIndex < 0 || productIndex >= this.products.length) return alert(`Product isn't in products list!`);
+
+      this.products.splice(productIndex, 1);
+      vueposLog(`Removed product "${product.name}" from products.`);
+
+      this.saveData();
+    },
+    /**@param {Product[]} products */
+    onDefaultProductsRequested(products) {
+      let productsLength = this.products.length;
+
+      for (let i = 0; i < productsLength; i++) {
+        this.products.pop();
+      }
+      
+      console.log(this.products);
+      this.products.push(...products);
+
+      vueposLog(`Added ${products.length} default products.`);
+
+      this.saveData();
+    },
+    /**@param {Boolean} checked */
+    onAdminModeToggle(checked) {
+      this.adminMode = checked;
+      vueposLog(`Switched content to: %c${(this.adminMode ? "Admin" : "Employee")} Mode`, 
+        "color:#77ccff; font-weight: bold; text-decoration: underline;"
+      );
+      // alert(`You are now in ${(this.adminMode ? "Admin" : "Employee")} Mode`);
+    },
+
+    saveData() {
+      localStorage.setItem(this.localStorageName, JSON.stringify(this.$data.products));
+      vueposLog(`Saved products to localStorage as "${this.localStorageName}"`)
+    },
+    loadData() {
+      this.$data.products = JSON.parse(localStorage.getItem(this.localStorageName));
+      if (this.$data.products) vueposLog(`Loaded products from localStorage from name: "${this.localStorageName}"`)
+      else {
+        this.$data.products = [];
+        vueposLog(`No products were found using localStorageName "${this.localStorageName}"`);
+      }
+    }
   }
 }
 </script>
