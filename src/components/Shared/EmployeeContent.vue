@@ -3,7 +3,7 @@
   <div>
     <product-display @employeeadditemtobasket="EmployeeAddItemToBasket" :products="products"/>
     <h3>big text</h3>
-    <order-container :order="basket"/>
+    <order-container :order="basket" v-on:ordersubmit="FinishOrder"/>
   </div>
 </template>
 
@@ -30,6 +30,10 @@ export default {
         this.basket.PushProduct(product)
       }
     },
+    FinishOrder(){
+      this.$emit('addordertohistory', this.basket)
+      this.basket = new Order()
+    }
   },
 };
 </script>

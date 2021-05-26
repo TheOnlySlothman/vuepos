@@ -10,7 +10,7 @@
       />
     </div>
     <div id="content" v-else>
-      <employee-content :products="[...products]"/>
+      <employee-content :products="[...products]" v-on:addordertohistory="AddOrderToHistory"/>
     </div>
   </div>
 </template>
@@ -86,6 +86,9 @@ export default {
         "color:#77ccff; font-weight: bold; text-decoration: underline;"
       );
       // alert(`You are now in ${(this.adminMode ? "Admin" : "Employee")} Mode`);
+    },
+    AddOrderToHistory(order){
+      this.orders.push(order)
     },
 
     saveData() {

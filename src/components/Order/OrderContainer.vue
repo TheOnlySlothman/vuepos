@@ -8,6 +8,9 @@
       :product="p"
     >
     </employee-order-product>
+    <h3
+    v-on:click="OrderSubmit">
+    big fat button</h3>
     </div>
   </div>
 </template>
@@ -20,6 +23,11 @@ export default {
   props: {
     order: Order,
   },
+  methods: {
+    OrderSubmit(){
+      this.$emit('ordersubmit')
+    }
+  }
 };
 </script>
 
