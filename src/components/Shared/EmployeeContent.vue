@@ -19,7 +19,7 @@ export default {
   methods: {
     /**@param {Product} product */
     EmployeeAddItemToBasket(product) {
-      if (this.basket.hasProduct(product)) {
+      if (this.basket.HasProduct(product)) {
         //this.$emit('quantity-change', product, 1)
         this.basket[this.basket.indexOf(this.basket.FindProduct(product))].quantity += 1
         

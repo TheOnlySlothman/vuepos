@@ -3,13 +3,13 @@
     <div class="admin-product">
         <label>
             Display
-            <input name="displayed" type="checkbox" :value="product.displayed" @change="onPropertyChanged">
+            <input name="displayed" type="checkbox" :checked="product.displayed" @change="onPropertyChanged">
         </label>
         <input name="name" type="text" :value="product.name" @change="onPropertyChanged">
         <input name="description" type="text" :value="product.description" @change="onPropertyChanged">
         <input name="price" type="number" :value="product.price" @change="onPropertyChanged">
         <input name="quantity" type="number" :value="product.quantity" @change="onPropertyChanged">
-        <button id="removeUpdateButton" @click="removeUpdateButtonClicked">Remove</button>
+        <button class="removeUpdateButton" @click="removeUpdateButtonClicked">Remove</button>
     </div>
 </template>
 
@@ -19,7 +19,8 @@ import vueposLogger from '../../../models/vueposLogger';
 
 export default {
     props: {
-        product: [Product, Object]
+        product: [Product, Object],
+        index: Number
     },
     data: () => ({
         updatedProduct: [Product, Object]
@@ -50,7 +51,7 @@ export default {
                     case "boolean": return value == "true";
                     case "string": default: return value;
                 }
-            })(this.product[property], e.target.value);
+            })(this.product[property], e.target.checked && `${e.target.checked}` || e.target.value);
 
             this.updatedProduct[property] = value;
             vueposLogger(`Property "${property}" was updated from %c${preValue} %cto %c${value}%c.`, 
@@ -59,7 +60,8 @@ export default {
             this.updateButtonText();
         },
         updateButtonText() {
-            let btn = document.getElementById('removeUpdateButton');
+            let btns = document.getElementsByClassName('removeUpdateButton');
+            let btn = btns.item(this.index);
             btn.innerText = btn.innerText == "Update" ? "Remove" : "Update";
         }
     }
