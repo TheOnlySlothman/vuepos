@@ -11,7 +11,10 @@ export default class Order {
     PushProduct(product){
         this.products.push(product)
     }
-    FindProduct(product){
+    HasProduct(product){
         return this.products.some(x => x.name == product.name)
+    }
+    FindProduct(product){
+        return this.products.find(x => x.name == product.name)
     }
 }

@@ -13,18 +13,16 @@ import OrderContainer from '../Order/OrderContainer.vue';
 import ProductDisplay from '../Products/Employee/ProductDisplay.vue';
 export default {
   components: { ProductDisplay, OrderContainer },
-  props: {
-    products: Array,
-  },
   data: () => ({
       basket: new Order()
     }),
   methods: {
     /**@param {Product} product */
     EmployeeAddItemToBasket(product) {
-      if (this.basket.FindProduct(product)) {
+      if (this.basket.hasProduct(product)) {
         //this.$emit('quantity-change', product, 1)
-        this.basket.PushProduct(product)
+        this.basket[this.basket.indexOf(this.basket.FindProduct(product))].quantity += 1
+        
       }
       else {
         this.basket.PushProduct(product)
