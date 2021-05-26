@@ -1,15 +1,7 @@
 <template>
   <div id="app">
-    <div id="content" v-if="adminMode">
-      <admin-content :products="products" 
-        @new-product="onNewProductAdded" 
-        @remove-product="onRemoveProduct"
-      />
-    </div>
-    <div id="content" v-else>
-      <employee-content 
-        @new-orderproduct="onNewOrderProductAdded"
-      />
+    <div id="content">
+      <employee-content v-on="" :products="products"/>
     </div>
   </div>
 </template>
@@ -17,11 +9,10 @@
 <script>
 import Product from './models/Product'
 import Order from './models/Order'
-//import History from './components/History/History.vue'
-
+import EmployeeContent from './components/Shared/EmployeeContent'
 
 export default {
-  components: {   },
+  components: {  EmployeeContent },
   name: 'App',
   data: () => ({
     orders: [
@@ -36,17 +27,11 @@ export default {
     ],
     products : [
       new Product('Cucumber', 'Long juicy green vegetable', 2, 1),
-      new Product('Orange', 'Round juicy orange fruit', 1, 2),
-      new Product('Beef', 'Round Juicy red meat', 5, 5),
-      new Product('Chicken Fillet', 'Chicken Fillet shaped pink meat', 7, 4)
+      new Product('Orange', 'Round juicy orange fruit', 1, 1),
+      new Product('Beef', 'Round Juicy red meat', 5, 1),
+      new Product('Chicken Fillet', 'Chicken Fillet shaped pink meat', 7, 1)
     ]
-  }),
-  methods: {
-    onNewOrderProductAdded()
-    {
-
-    }
-  }
+  })
 }
 </script>
 
