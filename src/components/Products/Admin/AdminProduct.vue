@@ -3,12 +3,12 @@
     <div class="admin-product">
         <label>
             Display
-            <input name="displayed" type="checkbox" :checked="product.displayed" @change="onPropertyChanged">
+            <input name="displayed" type="checkbox" :checked="updatedProduct.displayed" @change="onPropertyChanged">
         </label>
-        <input name="name" type="text" :value="product.name" @change="onPropertyChanged">
-        <input name="description" type="text" :value="product.description" @change="onPropertyChanged">
-        <input name="price" type="number" :value="product.price" @change="onPropertyChanged">
-        <input name="quantity" type="number" :value="product.quantity" @change="onPropertyChanged">
+        <input name="name" type="text" :value="updatedProduct.name" @change="onPropertyChanged">
+        <input name="description" type="text" :value="updatedProduct.description" @change="onPropertyChanged">
+        <input name="price" min="1" type="number" :value="updatedProduct.price" @change="onPropertyChanged">
+        <input name="quantity" min="0" type="number" :value="updatedProduct.quantity" @change="onPropertyChanged">
         <button class="removeUpdateButton" @click="removeUpdateButtonClicked">Remove</button>
     </div>
 </template>
@@ -56,6 +56,10 @@ export default {
             })(this.product[property], e.target.checked && `${e.target.checked}` || e.target.value);
 
             this.updatedProduct[property] = value;
+            if (property == 'quantity') {
+                this.updatedProduct.displayed = false;
+            }
+
             vueposLogger(`Property "${property}" was updated from %c${preValue} %cto %c${value}%c.`, 
                 changeColor, white, changeColor, white);
 
