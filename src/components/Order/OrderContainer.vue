@@ -11,7 +11,7 @@
       </div>
       <div class="goBottom" id="total">
         <h3>Total:</h3>
-        <p id="sum">{{ sum }} XOF</p>
+        <p id="sum">{{ sum }} NGN</p>
       </div>
       <button class="goBottom" @click="OrderSubmit">Buy</button>
     </div>
@@ -29,9 +29,11 @@ export default {
     sum: Number
   },
   methods: {
-    OrderSubmit() { this.$emit('ordersubmit') }
+    OrderSubmit() {
+      this.$emit('ordersubmit') 
+    }
   }
-};
+}
 </script>
 
 <style>
