@@ -28,7 +28,7 @@ export default {
     position: relative;
     width: 200px;
     margin: 5px;
-    padding: 5px;
+    padding: 10px;
     border-radius: 20px;
     border: 2px solid darkblue;
     background-color: lavender;
@@ -47,6 +47,9 @@ export default {
     margin: 0;
 }
 .product-name {
+    margin-block-start: 0%;
+}
+.product-price {
     margin-block-start: 0%;
 }
 .product-description {
