@@ -1,7 +1,7 @@
 <template>
     <div class="history-order-product">
         <!-- Product from cart displayed in History -->
-        <p>{{product.quantity}}x {{product.name}}: {{product.price}} XOF.</p>
+        <p>{{product.quantity}}x {{product.name}}: {{product.price}} NGN.</p>
         <p>{{product.description}}</p>
     </div>
 </template>
