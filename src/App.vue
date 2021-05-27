@@ -11,19 +11,19 @@
       />
     </div>
     <div id="content" v-else>
-      <employee-content :products="[...products]" v-on:addordertohistory="AddOrderToHistory"/>
+      <employee-content :products="[...products]" :orders="orders" v-on:addordertohistory="AddOrderToHistory"/>
     </div>
   </div>
 </template>
 
 <script>
-// import Product from './models/Product'
-// import Order from './models/Order'
 import vueposLog from './models/vueposLogger';
 
 import EmployeeContent from './components/Shared/EmployeeContent'
 import NavigationBar from './components/Shared/NavigationBar.vue';
 import AdminContent from './components/Shared/AdminContent.vue';
+import Order from './models/Order';
+import Product from './models/Product';
 
 export default {
   name: 'App',
@@ -45,16 +45,18 @@ export default {
       // new Product('Chicken Fillet', 'Chicken Fillet shaped pink meat', 7, 5)
     ],
     adminMode: false,
-    localStorageName: 'products'
   }),
   components: { NavigationBar, AdminContent, EmployeeContent },
-  created() { this.loadData(); },
+  created() { 
+    this.loadData('products'); 
+    this.loadData('orders'); 
+    },
   methods: {
     /**@param {Product} product */
     onNewProductAdded(product) {
       this.products.push(product);
       vueposLog(`Added ${product.quantity} ${product.name}${(product.name.endsWith('s') ? 'es' : 's')} for the price: ${product.price}`);
-      this.saveData();
+      this.saveData('products');
     },
     /**@param {Product} origin
      * @param {Product} updated*/
@@ -74,7 +76,7 @@ export default {
       vueposLog(`Product updated`);
       console.table(changes);
 
-      this.saveData();
+      this.saveData('products');
     },
     /**@param {Product} product */
     onRemoveProduct(product) {
@@ -84,7 +86,7 @@ export default {
       this.products.splice(productIndex, 1);
       vueposLog(`Removed product "${product.name}" from products.`);
 
-      this.saveData();
+      this.saveData('products');
     },
     /**@param {Product[]} products */
     onDefaultProductsRequested(products) {
@@ -99,7 +101,7 @@ export default {
 
       vueposLog(`Added ${products.length} default products.`);
 
-      this.saveData();
+      this.saveData('products');
     },
     /**@param {Boolean} checked */
     onAdminModeToggle(checked) {
@@ -111,20 +113,54 @@ export default {
     },
     /**@param {Order} order */
     AddOrderToHistory(order){
-      this.orders.push(order)
+      this.orders.push(order);
       order.products.forEach(x => this.products[this.products.indexOf(this.products.find(y => y.name == x.name))].quantity -= x.quantity)
+      this.saveData('orders');
     },
 
-    saveData() {
-      localStorage.setItem(this.localStorageName, JSON.stringify(this.$data.products));
-      vueposLog(`Saved products to localStorage as "${this.localStorageName}"`)
+    /**@param {'products' | 'orders'} name */
+    saveData(name) {
+      let data = (function getDataFromName(_this) {
+        switch (name) {
+          case 'products': return _this.$data.products;
+          case 'orders': return _this.$data.orders;        
+          default: 
+            try { throw new Error(`${name} was not a recognized input!`); }
+            catch (err) {
+              alert(err);
+              return null;
+            }
+        }
+      })(this);
+      if (!data) return;
+
+      localStorage.setItem(name, JSON.stringify(data));
+      vueposLog(`Saved ${name} to localStorage as "${name}"`)
     },
-    loadData() {
-      this.$data.products = JSON.parse(localStorage.getItem(this.localStorageName));
-      if (this.$data.products) vueposLog(`Loaded products from localStorage from name: "${this.localStorageName}"`)
+    /**@param {'products' | 'orders'} name */
+    loadData(name) {
+      let isProducts = name == 'products';
+      let JSONdata = JSON.parse(localStorage.getItem(name)) || [];
+
+      if (isProducts) {
+        this.$data.products = JSONdata.map(p => {
+          return new Product(p.name, p.description, p.price, p.quantity);
+        });
+      }
+      else {
+        this.$data.orders = JSONdata.map(o => {
+          let result = new Order(o.id, ...o.products);
+          result.placedAt = new Date(o.placedAt);
+          return result;
+        });
+      }
+
+      let data = isProducts ? this.$data.products : this.$data.orders;
+      if (data) 
+        vueposLog(`Loaded ${name} from localStorage from name: "${name}"`)
       else {
         this.$data.products = [];
-        vueposLog(`No products were found using localStorageName "${this.localStorageName}"`);
+        vueposLog(`No ${name} were found using localStorageName "${name}"`);
       }
     }
   }

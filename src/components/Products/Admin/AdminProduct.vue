@@ -58,18 +58,28 @@ export default {
             this.updatedProduct[property] = value;
             vueposLogger(`Property "${property}" was updated from %c${preValue} %cto %c${value}%c.`, 
                 changeColor, white, changeColor, white);
-        
-            this.updateButtonText();
+
+            let btns = document.getElementsByClassName('removeUpdateButton');
+            let btn = btns.item(this.index);
+            
+            if (btn.innerText != 'Update')
+                this.updateButtonText();
         },
         updateButtonText() {
             let btns = document.getElementsByClassName('removeUpdateButton');
             let btn = btns.item(this.index);
             btn.innerText = btn.innerText == "Update" ? "Remove" : "Update";
+            btn.setAttribute('class', `removeUpdateButton ${btn.innerText}`);
         }
     }
 }
 </script>
 
 <style>
-
+.Remove {
+    /* red */
+}
+.Update {
+    /* yellow */
+}
 </style>

@@ -2,9 +2,11 @@
     <!-- The application in employee view -->
   <div id="employee-content">
     <div class="employee-content-split" id="employee-content-splitter-1">
+      <h2>Products</h2>
       <product-display @employeeadditemtobasket="EmployeeAddItemToBasket" :products="products.filter(x => x.displayed)"/>
     </div>
     <div class="employee-content-split" id="employee-content-splitter-2">
+      <h2 style="text-align:center;">Your Basket</h2>
       <order-container :basket="basket" :sum="sum" @ordersubmit="FinishOrder" @deleteorderproduct="EmployeeRemoveItemToBasket"/>
     </div>
   </div>
@@ -19,7 +21,8 @@ import ProductDisplay from '../Products/Employee/ProductDisplay.vue';
 export default {
   components: { ProductDisplay, OrderContainer },
   props: {
-    products: Array
+    products: Array,
+    orders: Array
   },
   data: () => ({
       basket: new Basket(),
@@ -32,7 +35,9 @@ export default {
       this.sum = this.basket.sum();
     },
     FinishOrder() {
-      this.$emit('addordertohistory', new Order(this.products.length, this.basket.products))
+      if(this.basket.products.length <= 0)
+        return
+      this.$emit('addordertohistory', new Order(this.orders.length + 1, ...this.basket.products))
       this.basket = new Basket();
     },
     EmployeeRemoveItemToBasket(product){
