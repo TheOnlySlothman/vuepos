@@ -71,5 +71,7 @@ export default {
 </script>
 
 <style>
-
+    .removeUpdateButton{
+        background-color: #00d6ff;
+    }
 </style>

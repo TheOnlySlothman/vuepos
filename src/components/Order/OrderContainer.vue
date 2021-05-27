@@ -55,6 +55,7 @@ export default {
   border-top: 2px solid black;
   margin: 2%;
   padding-top: 2%;
+  background-color: #00ff21;
 }
 #total > * {
   display: inline-block;

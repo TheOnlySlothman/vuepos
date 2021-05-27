@@ -5,7 +5,7 @@
         <input required placeholder="Description" name="description" type="text" v-model="description">
         <input required placeholder="Price" name="price" type="number" v-model="price">
         <input required placeholder="Quantity" name="quantity" type="number" v-model="quantity">
-        <button @click="addProductClicked">Add Product</button>    
+        <button class="add-new-product-btn" @click="addProductClicked">Add Product</button>    
     </div>
 </template>
 
@@ -51,5 +51,7 @@ export default {
 </script>
 
 <style>
-
+    .add-new-product-btn {
+        background-color: #00d6ff;
+    }
 </style>
