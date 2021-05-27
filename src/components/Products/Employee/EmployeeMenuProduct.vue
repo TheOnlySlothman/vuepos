@@ -27,12 +27,14 @@ export default {
 .employee-menu-product {
     position: relative;
     width: 200px;
-    border: 1px solid;
+    margin: 2px;
+    border-radius: 20px;
+    border: 2px solid;
 }
 .employee-menu-product > * {
     margin: 1%;
-    margin-block-start: 0;
-    margin-block-end: 0;
+    margin-block-start: 1%;
+    margin-block-end: 1%;
 }
 
 .top {
