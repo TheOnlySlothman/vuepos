@@ -36,7 +36,7 @@ export default {
       this.basket = new Basket();
     }
   },
-};
+}
 </script>
 
 <style>
