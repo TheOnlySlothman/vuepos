@@ -76,9 +76,13 @@ export default {
         background-color: #00d6ff;
     }
     .Remove {
-        /* red */
+        background-color: red;
+        border: 1px solid darkred;
+        border-radius: 5%;
     }
     .Update {
-        /* yellow */
+        background-color: orange;
+        border: 1px solid darkorange;
+        border-radius: 5%;
     }
 </style>
