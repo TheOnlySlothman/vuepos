@@ -7,6 +7,7 @@
           v-for="(p, index) in basket.products"
           :key="index"
           :product="p"
+          @deleteorderproduct="DeleteOrderProduct"
         />
       </div>
       <div class="goBottom" id="total">
@@ -31,6 +32,9 @@ export default {
   methods: {
     OrderSubmit() {
       this.$emit('ordersubmit') 
+    },
+    DeleteOrderProduct(product){
+      this.$emit('deleteorderproduct', product) 
     }
   }
 }
