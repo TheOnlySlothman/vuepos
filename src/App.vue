@@ -111,8 +111,10 @@ export default {
       );
       // alert(`You are now in ${(this.adminMode ? "Admin" : "Employee")} Mode`);
     },
+    /**@param {Order} order */
     AddOrderToHistory(order){
       this.orders.push(order);
+      order.products.forEach(x => this.products[this.products.indexOf(this.products.find(y => y.name == x.name))].quantity -= x.quantity)
       this.saveData('orders');
     },
 

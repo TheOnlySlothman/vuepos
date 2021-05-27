@@ -7,6 +7,7 @@
           v-for="(p, index) in basket.products"
           :key="index"
           :product="p"
+          @deleteorderproduct="DeleteOrderProduct"
         />
       </div>
       <div class="goBottom" id="total">
@@ -31,6 +32,9 @@ export default {
   methods: {
     OrderSubmit() {
       this.$emit('ordersubmit') 
+    },
+    DeleteOrderProduct(product){
+      this.$emit('deleteorderproduct', product) 
     }
   }
 }
@@ -43,7 +47,7 @@ export default {
   display: flex;
   align-items: center;
   flex-direction: column;
-  min-height: 85vh;
+  min-height: 80vh;
 }
 .goBottom {
   position: absolute;

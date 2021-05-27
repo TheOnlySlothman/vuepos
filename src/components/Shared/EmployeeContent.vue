@@ -2,10 +2,12 @@
     <!-- The application in employee view -->
   <div id="employee-content">
     <div class="employee-content-split" id="employee-content-splitter-1">
+      <h2>Products</h2>
       <product-display @employeeadditemtobasket="EmployeeAddItemToBasket" :products="products.filter(x => x.displayed)"/>
     </div>
     <div class="employee-content-split" id="employee-content-splitter-2">
-      <order-container :basket="basket" :sum="sum" @ordersubmit="FinishOrder"/>
+      <h2 style="text-align:center;">Your Basket</h2>
+      <order-container :basket="basket" :sum="sum" @ordersubmit="FinishOrder" @deleteorderproduct="EmployeeRemoveItemToBasket"/>
     </div>
   </div>
 </template>
@@ -37,6 +39,10 @@ export default {
         return
       this.$emit('addordertohistory', new Order(this.orders.length + 1, ...this.basket.products))
       this.basket = new Basket();
+    },
+    EmployeeRemoveItemToBasket(product){
+      this.basket.remove(product)
+      this.sum = this.basket.sum()
     }
   },
 }
