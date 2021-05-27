@@ -34,8 +34,8 @@ export default {
 }
 .employee-menu-product > * {
     margin: 1%;
-    margin-block-start: 1%;
-    margin-block-end: 1%;
+    margin-block-start: 0%;
+    margin-block-end: 0%;
 }
 
 .top {
