@@ -27,20 +27,34 @@ export default {
 .employee-menu-product {
     position: relative;
     width: 200px;
-    border: 1px solid;
+    margin: 7px;
+    padding: 10px;
+    border-radius: 20px;
+    border: 2px solid darkblue;
+    background-color: lavender;
 }
 .employee-menu-product > * {
     margin: 1%;
-    margin-block-start: 0;
-    margin-block-end: 0;
+    margin-block-start: 0%;
+    margin-block-end: 0%;
 }
 
 .top {
     display: inline-block;
     width: 100%;
+    color: darkblue;
+    padding: 0;
+    margin: 0;
+}
+.product-name {
+    margin-block-start: 0%;
+}
+.product-price {
+    margin-block-start: 0%;
 }
 .product-description {
     position: relative;
     bottom: 0;
+    color: darkslategray;
 }
 </style>

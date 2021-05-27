@@ -9,7 +9,7 @@
         <input name="description" type="text" :value="updatedProduct.description" @change="onPropertyChanged">
         <input name="price" min="1" type="number" :value="updatedProduct.price" @change="onPropertyChanged">
         <input name="quantity" min="0" type="number" :value="updatedProduct.quantity" @change="onPropertyChanged">
-        <button class="removeUpdateButton" @click="removeUpdateButtonClicked">Remove</button>
+        <button class="removeUpdateButton Remove" @click="removeUpdateButtonClicked">Remove</button>
     </div>
 </template>
 
@@ -80,10 +80,14 @@ export default {
 </script>
 
 <style>
-.Remove {
-    /* red */
-}
-.Update {
-    /* yellow */
-}
+    .Remove {
+        background-color: red;
+        border: 1px solid darkred;
+        border-radius: 5%;
+    }
+    .Update {
+        background-color: orange;
+        border: 1px solid darkorange;
+        border-radius: 5%;
+    }
 </style>

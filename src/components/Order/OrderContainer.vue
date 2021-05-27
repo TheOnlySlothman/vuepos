@@ -14,7 +14,7 @@
         <h3>Total:</h3>
         <p id="sum">{{ sum }} NGN</p>
       </div>
-      <button class="goBottom" @click="OrderSubmit">Buy</button>
+      <button class="goBottom" id="buy-btn" @click="OrderSubmit">Buy</button>
     </div>
   </div>
 </template>
@@ -54,6 +54,9 @@ export default {
   bottom: 0;
   width: 100%;
 }
+    #buy-btn {
+        background-color: #00ff21;
+    }
 #total {
   bottom: 10%;
   border-top: 2px solid black;

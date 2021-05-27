@@ -26,6 +26,7 @@ export default {
     #navigation-bar {
         display: flex;
         border: 3px solid lightgray;
+        background-color: cornflowerblue;
     }
 
     #adminModeCheckLabel {
