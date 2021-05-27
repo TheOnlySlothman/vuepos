@@ -19,7 +19,7 @@ import HistoryOrderProduct from './HistoryOrderProduct.vue';
 export default {
     components: { HistoryOrderProduct },
     props: {
-        order: Order
+        order: [Order, Object]
     }
 }
 </script>
