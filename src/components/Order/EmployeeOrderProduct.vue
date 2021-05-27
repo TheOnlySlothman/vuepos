@@ -1,7 +1,8 @@
 <template>
     <div>
         <!-- Product in the employee order -->
-        <div class="employee-order-product">
+        <div class="employee-order-product"
+        @click="DeleteOrderProduct">
             <p class="product-quantity">{{product.quantity}}x </p>
             <h3 class="product-name">{{product.name}}</h3>
             <p class="product-price">{{product.price}} NGN</p>
@@ -15,6 +16,12 @@ import Product from '../../models/Product'
 export default {
     props: {
         product: [Product, Object]
+    },
+    methods: {
+        DeleteOrderProduct()
+        {
+            this.$emit("deleteorderproduct", this.product)
+        }
     }
 }
 </script>
