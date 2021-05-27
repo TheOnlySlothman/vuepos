@@ -27,7 +27,7 @@ export default {
 .employee-menu-product {
     position: relative;
     width: 200px;
-    margin: 3px;
+    margin: 5px;
     padding: 5px;;
     border-radius: 20px;
     border: 2px solid darkblue;
