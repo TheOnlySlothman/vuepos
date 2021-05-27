@@ -30,7 +30,8 @@ export default {
     margin: 3px;
     padding: 5px;;
     border-radius: 20px;
-    border: 2px solid;
+    border: 2px solid darkblue;
+    background-color: lavender;
 }
 .employee-menu-product > * {
     margin: 1%;
@@ -41,9 +42,11 @@ export default {
 .top {
     display: inline-block;
     width: 100%;
+    color: darkblue;
 }
 .product-description {
     position: relative;
     bottom: 0;
+    color: darkslategray;
 }
 </style>
