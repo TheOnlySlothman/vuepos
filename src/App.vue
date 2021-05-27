@@ -142,7 +142,9 @@ export default {
 
       if (isProducts) {
         this.$data.products = JSONdata.map(p => {
-          return new Product(p.name, p.description, p.price, p.quantity);
+          let result = new Product(p.name, p.description, p.price, p.quantity);
+          result.displayed = p.displayed;
+          return result;
         });
       }
       else {
