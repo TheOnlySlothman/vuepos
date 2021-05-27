@@ -23,6 +23,7 @@ import EmployeeContent from './components/Shared/EmployeeContent'
 import NavigationBar from './components/Shared/NavigationBar.vue';
 import AdminContent from './components/Shared/AdminContent.vue';
 import Order from './models/Order';
+import Product from './models/Product';
 
 export default {
   name: 'App',
@@ -137,12 +138,15 @@ export default {
     /**@param {'products' | 'orders'} name */
     loadData(name) {
       let isProducts = name == 'products';
+      let JSONdata = JSON.parse(localStorage.getItem(name)) || [];
+
       if (isProducts) {
-        this.$data.products = JSON.parse(localStorage.getItem(name)) || [];
+        this.$data.products = JSONdata.map(p => {
+          return new Product(p.name, p.description, p.price, p.quantity);
+        });
       }
       else {
-        let JSONorders = JSON.parse(localStorage.getItem(name)) || [];
-        this.$data.orders = JSONorders.map(o => {
+        this.$data.orders = JSONdata.map(o => {
           let result = new Order(o.id, ...o.products);
           result.placedAt = new Date(o.placedAt);
           return result;
