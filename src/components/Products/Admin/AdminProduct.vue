@@ -31,13 +31,15 @@ export default {
     methods: {
         removeUpdateButtonClicked(e) {
             let type = e.target.innerText;
-            this.updateButtonText();
 
             if (type == 'Remove') return this.removeButtonClicked(e);
             else if (type == 'Update') return this.updateButtonClicked(e);
             else return alert(`Action "${type}" not handled in click handler!`);
         },
-        updateButtonClicked() { this.$emit('update-product', this.product, this.updatedProduct) },
+        updateButtonClicked() { 
+            this.updateButtonText();
+            this.$emit('update-product', this.product, this.updatedProduct) 
+        },
         removeButtonClicked() { this.$emit('remove-product', this.product); },
         onPropertyChanged(e) {
             let property = e.target.name;

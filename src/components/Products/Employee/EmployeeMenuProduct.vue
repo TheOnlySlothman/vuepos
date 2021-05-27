@@ -1,11 +1,11 @@
 <template>
-    <div>
-        <!-- Big fat button -->
-        <div class="employee-menu-product"
-        v-on:click=EmployeeMenuProductItemClick()>
-            <p>{{product.name}}</p>
-            <p>{{product.price}}</p>
+    <!-- Big fat button -->
+    <div class="employee-menu-product" v-on:click="EmployeeMenuProductItemClick()">
+        <div class="top">
+            <h3 class="product-name">{{product.name}}</h3>
+            <p class="product-price">{{product.price}}</p>
         </div>
+        <p class="product-description">{{product.description}}</p>
     </div>
 </template>
 
@@ -24,8 +24,23 @@ export default {
 </script>
 
 <style>
-.employee-menu-product{
-    width:200px;
-    border:1px solid;
+.employee-menu-product {
+    position: relative;
+    width: 200px;
+    border: 1px solid;
+}
+.employee-menu-product > * {
+    margin: 1%;
+    margin-block-start: 0;
+    margin-block-end: 0;
+}
+
+.top {
+    display: inline-block;
+    width: 100%;
+}
+.product-description {
+    position: relative;
+    bottom: 0;
 }
 </style>
