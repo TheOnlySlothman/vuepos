@@ -5,7 +5,7 @@
       <product-display @employeeadditemtobasket="EmployeeAddItemToBasket" :products="products.filter(x => x.displayed)"/>
     </div>
     <div class="employee-content-split" id="employee-content-splitter-2">
-      <order-container :basket="basket" :sum="sum" @:ordersubmit="FinishOrder"/>
+      <order-container :basket="basket" :sum="sum" @ordersubmit="FinishOrder"/>
     </div>
   </div>
 </template>
