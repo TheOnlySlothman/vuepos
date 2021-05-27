@@ -2,9 +2,9 @@
     <div>
         <!-- Product in the employee order -->
         <div class="employee-order-product">
-            <p>{{product.name}}</p>
-            <p>{{product.price}}</p>
-            <p>{{product.quantity}}</p>
+            <p class="product-quantity">{{product.quantity}}x </p>
+            <h3 class="product-name">{{product.name}}</h3>
+            <p class="product-price">{{product.totalPrice()}} NGN</p>
         </div>
     </div>
 </template>

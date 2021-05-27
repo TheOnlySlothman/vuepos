@@ -12,4 +12,8 @@ export default class Product {
         this.quantity = quantity
         this.displayed = false;
     }
+
+    totalPrice() {
+        return this.price * this.quantity;
+    }
 }
