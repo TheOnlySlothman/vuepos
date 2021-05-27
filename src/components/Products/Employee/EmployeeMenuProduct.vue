@@ -46,6 +46,9 @@ export default {
     padding: 0;
     margin: 0;
 }
+.product-name {
+    margin-block-start: 0%;
+}
 .product-description {
     position: relative;
     bottom: 0;
