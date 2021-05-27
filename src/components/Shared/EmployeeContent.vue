@@ -32,7 +32,7 @@ export default {
       this.sum = this.basket.sum();
     },
     FinishOrder() {
-      this.$emit('addordertohistory', new Order(this.products.length, ...this.basket))
+      this.$emit('addordertohistory', new Order(this.products.length, ...this.basket.products))
       this.basket = new Basket();
     }
   },
