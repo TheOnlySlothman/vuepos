@@ -17,8 +17,8 @@
 </template>
 
 <script>
-import Product from './models/Product'
-import Order from './models/Order'
+// import Product from './models/Product'
+// import Order from './models/Order'
 import vueposLog from './models/vueposLogger';
 
 import EmployeeContent from './components/Shared/EmployeeContent'
@@ -29,14 +29,14 @@ export default {
   name: 'App',
   data: () => ({
     orders: [
-      new Order(1, 
-        new Product('Cucumber', 'Long juicy green vegetable', 2, 1),
-        new Product('Orange', 'Round juicy orange fruit', 1, 2)
-      ),
-      new Order(2, 
-        new Product('Beef', 'Round Juicy red meat', 5, 5),
-        new Product('Chicken Fillet', 'Chicken Fillet shaped pink meat', 7, 4)
-      )
+      // new Order(1, 
+      //   new Product('Cucumber', 'Long juicy green vegetable', 2, 1),
+      //   new Product('Orange', 'Round juicy orange fruit', 1, 2)
+      // ),
+      // new Order(2, 
+      //   new Product('Beef', 'Round Juicy red meat', 5, 5),
+      //   new Product('Chicken Fillet', 'Chicken Fillet shaped pink meat', 7, 4)
+      // )
     ],
     products : [
       // new Product('Cucumber', 'Long juicy green vegetable', 2, 1),
