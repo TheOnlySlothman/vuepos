@@ -1,6 +1,6 @@
 <template>
     <!-- History component consisting of multiple HistoryOrders -->
-    <div class="history">
+    <div class="history" v-if="orders[0] !== undefined">
         <history-order 
         v-for="(o, index) in orders"
         :key="index"

@@ -4,7 +4,7 @@
         <div class="employee-order-product">
             <p class="product-quantity">{{product.quantity}}x </p>
             <h3 class="product-name">{{product.name}}</h3>
-            <p class="product-price">{{product.price}} NGN</p>
+            <p class="product-price">{{product.totalPrice()}} NGN</p>
         </div>
     </div>
 </template>
