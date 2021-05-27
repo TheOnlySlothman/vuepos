@@ -25,6 +25,8 @@ export default {
 <style>
     #navigation-bar {
         display: flex;
+        margin: 2px;
+        height: 10%;
         border: 3px solid lightgray;
         background-color: cornflowerblue;
     }
