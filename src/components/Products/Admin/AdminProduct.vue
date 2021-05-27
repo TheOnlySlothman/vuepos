@@ -65,11 +65,17 @@ export default {
             let btns = document.getElementsByClassName('removeUpdateButton');
             let btn = btns.item(this.index);
             btn.innerText = btn.innerText == "Update" ? "Remove" : "Update";
+            btn.setAttribute('class', `removeUpdateButton ${btn.innerText}`);
         }
     }
 }
 </script>
 
 <style>
-
+.Remove {
+    /* red */
+}
+.Update {
+    /* yellow */
+}
 </style>
