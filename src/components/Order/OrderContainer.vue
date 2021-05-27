@@ -43,7 +43,7 @@ export default {
   display: flex;
   align-items: center;
   flex-direction: column;
-  min-height: 85vh;
+  min-height: 80vh;
 }
 .goBottom {
   position: absolute;

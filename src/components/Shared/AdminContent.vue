@@ -4,12 +4,15 @@
         <div class="admin-content-split" id="admin-content-splitter-1">
             <button id="btnDefaultProductsRequest" @click="onDefaultProductsRequested">Add Default Products</button>
             <br /><br />
+            <h2>Add a new product</h2>
             <new-product :products="products" @new-product="onNewProductAdded" />
             <br /><br />
+            <h2>Products</h2>
             <product-list :products="products" @update-product="onUpdateProduct" @remove-product="onRemoveProduct" />
             <br />
         </div>
         <div class="admin-content-split" id="admin-content-splitter-2">
+            <h2 style="text-align:center;">History</h2>
             <history :orders="orders" />
         </div>
     </div>
