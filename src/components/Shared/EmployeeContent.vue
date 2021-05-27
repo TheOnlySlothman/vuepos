@@ -33,6 +33,8 @@ export default {
       this.sum = this.basket.sum();
     },
     FinishOrder() {
+      if(this.basket.products.length <= 0)
+        return
       this.$emit('addordertohistory', new Order(this.orders.length + 1, ...this.basket.products))
       this.basket = new Basket();
     }
