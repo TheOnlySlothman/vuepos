@@ -28,7 +28,7 @@ export default {
     position: relative;
     width: 200px;
     margin: 5px;
-    padding: 5px;;
+    padding: 5px;
     border-radius: 20px;
     border: 2px solid darkblue;
     background-color: lavender;
@@ -43,6 +43,8 @@ export default {
     display: inline-block;
     width: 100%;
     color: darkblue;
+    padding: 0;
+    margin: 0;
 }
 .product-description {
     position: relative;
